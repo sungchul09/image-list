@@ -1,6 +1,6 @@
 <template>
   <div class="header">
-    <router-link to="ImageList">메인</router-link>
+    <router-link to="/imageList/1/5">메인</router-link>
   </div>
 </template>
 

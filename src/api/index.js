@@ -1,11 +1,11 @@
 import axios from 'axios';
 
 const config = {
-    baseUrl: 'https://picsum.photos/'
+    baseUrl: process.env.VUE_APP_API_URL,
 }
 
-function fetchImageList() {
-    return axios.get(`${config.baseUrl}/v2/list`);
+function fetchImageList(page, limit) {
+    return axios.get(`${config.baseUrl}/v2/list?page=${page}&limit=${limit}`);
 }
 
 function fetchImageInfo(id) {

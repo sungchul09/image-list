@@ -12,6 +12,12 @@ export default {
   components: {
     ToolBar,
   },
+  data() {
+    return {
+      defaultPage: process.env.VUE_APP_DEF_PAGE,
+      defaultLimit: process.env.VUE_APP_DEF_LIMIT,
+    };
+  },
 };
 </script>
 

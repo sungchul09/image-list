@@ -14,7 +14,7 @@
         />
       </a>
     </ul>
-    <router-link to="/imageList">뒤로가기</router-link>
+    <router-link to="/imageList/1/5">뒤로가기</router-link>
   </div>
 </template>
 

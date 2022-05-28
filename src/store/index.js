@@ -26,8 +26,8 @@ export const store = new Vuex.Store({
         }
     },
     actions: {
-        FETCH_IMAGELIST({ commit }) {
-            fetchImageList().then(response => {
+        FETCH_IMAGELIST({ commit }, { page, limit }) {
+            fetchImageList(page, limit).then(response => {
                 commit('SET_IMAGELIST', response.data);
             })
                 .catch(error => {
