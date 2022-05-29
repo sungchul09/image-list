@@ -50,10 +50,12 @@ export default {
     },
   },
   created() {
+    window.scrollTo(0, 0);
     const page = this.$route.params.page;
     const limit = this.$route.params.limit;
     this.limit = limit;
     this.$store.state.spinnerStatus = true;
+    this.$store.state.btnStatus = true;
     this.$store.dispatch("FETCH_IMAGELIST", { page, limit });
   },
   mounted() {
@@ -181,7 +183,8 @@ ul {
   border: 1px solid #0064e6;
   color: white;
   background-color: #0064e6;
-  border-radius: 5%;
+  border-radius: 8%;
+  transition: 150ms ease-in-out;
 }
 @media screen and (max-width: 1024px) {
   .imageList {

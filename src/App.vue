@@ -1,25 +1,25 @@
 <template>
   <div id="app">
-    <tool-bar></tool-bar>
+    <header-menu></header-menu>
     <router-view></router-view>
-    <sticky-button></sticky-button>
-    <footer-component></footer-component>
-    <spinner-component
+    <sticky-button :active="this.$store.state.btnStatus"></sticky-button>
+    <loading-spinner
       :loading="this.$store.state.spinnerStatus"
-    ></spinner-component>
+    ></loading-spinner>
+    <footer-component></footer-component>
   </div>
 </template>
 
 <script>
-import ToolBar from "./components/ToolBar.vue";
-import SpinnerComponent from "./components/SpinnerComponent.vue";
-import StickyButton from "./components/stickyButton.vue";
+import HeaderMenu from "./components/headerMenu.vue";
+import LoadingSpinner from "./components/LoadingSpinner.vue";
+import StickyButton from "./components/StickyButton.vue";
 import FooterComponent from "./components/Footer.vue";
 
 export default {
   components: {
-    ToolBar,
-    SpinnerComponent,
+    HeaderMenu,
+    LoadingSpinner,
     StickyButton,
     FooterComponent,
   },

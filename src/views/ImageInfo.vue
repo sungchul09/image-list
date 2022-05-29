@@ -18,7 +18,6 @@
           <dd>{{ imageInfo.height }}</dd>
         </dl>
       </div>
-      <div class="backspace" @click="backspace">뒤로가기</div>
     </div>
   </div>
 </template>
@@ -33,15 +32,11 @@ export default {
   created() {
     window.scrollTo(0, 0);
     this.$store.state.spinnerStatus = true;
+    this.$store.state.btnStatus = false;
     this.$store.dispatch("FETCH_IMAGEINFO", this.$route.params.id);
   },
   mounted() {
     this.$store.state.spinnerStatus = false;
-  },
-  methods: {
-    backspace() {
-      this.$router.go(-1);
-    },
   },
 };
 </script>
@@ -52,7 +47,7 @@ li {
 }
 
 .imageInfo {
-  min-height: 1000px;
+  min-height: 800px;
 }
 
 .image {
@@ -83,25 +78,19 @@ li {
   display: flex;
   flex-direction: row;
   justify-content: center;
+  font-size: 20px;
 }
 
 .info dt {
   margin-right: 10px;
   color: grey;
+  font-size: 20px;
 }
 
 .info dd {
   margin: 0 40px 0 0;
 }
 
-.backspace {
-  text-align: right;
-}
-
-.backspace:hover {
-  text-decoration: underline;
-  cursor: pointer;
-}
 @media screen and (max-width: 768px) {
   .image img {
     max-height: 800px;
@@ -109,14 +98,17 @@ li {
     height: 100%;
     width: 100%;
   }
-}
+  .infoAndBtn {
+    margin: 0;
+    align-items: center;
+  }
 
-@media screen and (max-width: 480px) {
-  .image img {
-    max-height: 800px;
-    max-width: 800px;
-    width: 100%;
-    height: 100%;
+  .info dl {
+    flex-direction: column;
+    justify-content: center;
+  }
+  .info dt {
+    margin-top: 20px;
   }
 }
 </style>

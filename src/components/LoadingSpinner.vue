@@ -20,7 +20,7 @@ export default {
 <style>
 .lds-facebook {
   display: inline-block;
-  position: absolute;
+  position: fixed;
   width: 64px;
   height: 64px;
   top: 47%;
@@ -31,7 +31,7 @@ export default {
   position: absolute;
   left: 6px;
   width: 13px;
-  background: #42b883;
+  background: #0064e6;
   animation: lds-facebook 1.2s cubic-bezier(0, 0.5, 0.5, 1) infinite;
 }
 .lds-facebook div:nth-child(1) {

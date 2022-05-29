@@ -9,6 +9,7 @@ export const store = new Vuex.Store({
         imageList: [],
         imageInfo: {},
         spinnerStatus: '',
+        btnStatus: '',
     },
     getters: {
         GET_IMAGELIST(state) {

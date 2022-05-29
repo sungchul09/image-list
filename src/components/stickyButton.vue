@@ -1,12 +1,21 @@
 <template>
-  <div class="paging">
+  <div class="paging" v-if="active">
     <span @click="changePage(-1)">prev</span>
     <span @click="changePage(1)">next</span>
+  </div>
+  <div class="paging" v-else>
+    <router-link to="/">back</router-link>
   </div>
 </template>
 
 <script>
 export default {
+  props: {
+    active: {
+      type: Boolean,
+      required: true,
+    },
+  },
   methods: {
     changePage(value) {
       let page = this.$route.params.page;
@@ -25,6 +34,10 @@ export default {
 </script>
 
 <style scoped>
+a {
+  text-decoration: none;
+}
+
 .paging {
   position: sticky;
   bottom: 5%;
@@ -35,22 +48,25 @@ export default {
   width: 20px;
 }
 
-.paging span {
+.paging span,
+a {
   color: white;
   background-color: #0064e6;
-
-  width: 50px;
-  height: 50px;
+  width: 60px;
+  height: 60px;
+  line-height: 60px;
   text-align: center;
-  line-height: 50px;
   border-radius: 50%;
-  margin: 10px;
+  margin: 20px 50px 0 0;
+  font-size: 25px;
 }
 
-.paging span:hover {
+.paging span:hover,
+a:hover {
   cursor: pointer;
   border: 1px solid #0064e6;
   background-color: white;
   color: #0064e6;
+  transition: 150ms ease-in-out;
 }
 </style>
