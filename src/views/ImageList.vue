@@ -3,22 +3,16 @@
     <div class="limit">
       <p>페이지당 항목 수 :</p>
       <select v-model="limit" @change="changeLimit">
-        <option selected>5</option>
-        <option>10</option>
-        <option>15</option>
+        <option selected>10</option>
         <option>20</option>
-        <option>25</option>
-        <option>30</option>
+        <option>50</option>
+        <option>75</option>
+        <option>100</option>
+        <option>300</option>
       </select>
     </div>
     <div class="imageData">
-      <ul class="dataList" v-for="(data, index) in imageList" :key="index">
-        <span class="dataList__header" v-if="index === 0">
-          <li>이미지</li>
-          <li>작가</li>
-          <li>id</li>
-          <li>상세정보</li>
-        </span>
+      <ul v-for="(data, index) in imageList" :key="index">
         <span class="dataList__content">
           <li>
             <a
@@ -33,17 +27,14 @@
           </li>
           <li>#{{ data.id }}</li>
           <li>
-            <router-link :to="`/imageInfo/${data.id}`"
-              >상세정보 보기</router-link
-            >
+            <router-link :to="`/imageInfo/${data.id}`">상세정보</router-link>
           </li>
         </span>
       </ul>
     </div>
     <div class="paging">
-      <button @click="changePage(-1)">prev</button>
-      <p>현재 페이지는 {{ this.page }} 페이지 입니다.</p>
-      <button @click="changePage(1)">next</button>
+      <div class="prevBtn" @click="changePage(-1)">prev</div>
+      <div class="nextBtn" @click="changePage(1)">next</div>
     </div>
   </div>
 </template>
@@ -89,39 +80,76 @@ export default {
 </script>
 
 <style scoped>
-li {
+li,
+ul {
   list-style: none;
+  padding: 0;
 }
 
 .imageList {
-  padding: 50px;
-  min-height: 800px;
+  margin: 0px 300px;
 }
 
 .limit {
   display: flex;
+  align-items: baseline;
 }
 
-.imageList {
+.limit p {
+  margin-right: 10px;
+}
+
+.limit select {
+  font-size: 15px;
+  font-weight: bold;
+  text-align: center;
+  width: 150px;
+}
+
+.imageData {
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-start;
 }
 
-.dataList__content,
-.dataList__header {
-  display: flex;
+.imageData__content {
 }
 
-.dataList__header li {
-  width: 250px;
+.imageData__content li {
 }
 
-.dataList__content li {
-  width: 250px;
+.imageData__content a {
+}
+
+.imageData__content img {
 }
 
 .paging {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  transform: translate(-50%, -50%);
   display: flex;
+  flex-direction: column;
+}
+
+.paging div {
+  color: white;
+  background-color: #0064e6;
+
+  width: 50px;
+  height: 50px;
+  text-align: center;
+  line-height: 50px;
+  border-radius: 50%;
+  margin: 10px;
+}
+
+.paging div:hover {
+  cursor: pointer;
+  border: 1px solid #0064e6;
+  background-color: white;
+  color: #0064e6;
 }
 </style>

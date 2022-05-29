@@ -50,11 +50,10 @@ li {
 }
 
 .image img {
+  width: 100%;
   height: 100%;
-  min-width: 500px;
-  max-height: 700px;
-  vertical-align: middle;
-  border-style: none;
+  max-width: 500px;
+  max-height: 1000px;
 }
 
 .imageInfo {

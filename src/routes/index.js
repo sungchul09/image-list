@@ -12,7 +12,7 @@ export const router = new VueRouter({
             path: '/',
             redirect: to => {
                 to.params.page = 1;
-                to.params.limit = 100000000;
+                to.params.limit = 300;
                 return {
                     name: 'imageList'
                 }
