@@ -93,14 +93,9 @@ li {
   list-style: none;
 }
 
-img {
-  position: relative;
-  max-width: 50px;
-  max-height: 50px;
-}
-
 .imageList {
   padding: 50px;
+  min-height: 800px;
 }
 
 .limit {

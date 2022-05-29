@@ -27,17 +27,28 @@ export const store = new Vuex.Store({
     },
     actions: {
         FETCH_IMAGELIST({ commit }, { page, limit }) {
-            fetchImageList(page, limit).then(response => {
-                commit('SET_IMAGELIST', response.data);
-            })
+            fetchImageList(page, limit)
+                .then(response => {
+                    const data = response.data;
+                    data.map(v => {
+                        v.download_url = `https://picsum.photos/id/${v.id}/200`
+                        return v;
+                    });
+                    commit('SET_IMAGELIST', response.data);
+                })
                 .catch(error => {
                     console.log(error)
                 })
         },
         FETCH_IMAGEINFO({ commit }, id) {
-            fetchImageInfo(id).then(response => {
-                commit('SET_IMAGEINFO', response.data);
-            })
+            fetchImageInfo(id)
+                .then(response => {
+                    const data = response.data;
+                    const width = parseInt(data.width);
+                    const height = parseInt(data.height);
+                    data.download_url = `https://picsum.photos/id/${data.id}/${width}/${height}`
+                    commit('SET_IMAGEINFO', response.data);
+                })
                 .catch(error => {
                     console.log(error)
                 })
