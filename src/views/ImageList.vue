@@ -22,11 +22,16 @@
               <img :src="data.download_url" :alt="data.url" />
             </a>
           </li>
-          <li class="data__author">
-            <a :href="data.url" target="_blank">{{ data.author }}</a>
-          </li>
-          <li class="data__id">
-            <p>#{{ data.id }}</p>
+          <li class="data__text">
+            <span class="data__text__author">
+              <a :href="data.url" target="_blank">{{ data.author }}</a>
+            </span>
+            <span class="data__text__id">
+              <a
+                :href="`https://picsum.photos/id/${data.id}/${data.width}/${data.height}`"
+                >#{{ data.id }}</a
+              >
+            </span>
           </li>
           <li class="data__info">
             <router-link :to="`/imageInfo/${data.id}`">상세정보</router-link>
@@ -95,6 +100,7 @@ ul {
 .limit {
   display: flex;
   align-items: baseline;
+  justify-content: flex-end;
 }
 
 .limit p {
@@ -141,37 +147,49 @@ ul {
 .data .data__img {
 }
 
-.data .data__author a {
+.data__text {
+  padding: 0 5px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.data__text__author a {
   text-decoration: none;
   color: black;
 }
 
-.data .data__author a:hover {
+.data__text__author a:hover {
   color: #0064e6;
 }
 
-.data .data__id p {
-  border: 1px solid #0064e6;
+.data__text__id a {
+  text-decoration: none;
+  color: black;
+}
+
+.data__text__id a:hover {
+  cursor: pointer;
+  color: #0064e6;
+}
+
+.data .data__info {
+  text-align: right;
+}
+
+.data .data__info a {
+  text-decoration: none;
   color: #0064e6;
   background-color: white;
   width: 50px;
-  padding: 5px 0;
-  border-radius: 20%;
+  padding: 5px 10px;
   text-align: center;
 }
 
-.data .data__id p:hover {
+.data .data__info a:hover {
   cursor: pointer;
   border: 1px solid #0064e6;
   color: white;
   background-color: #0064e6;
-  width: 50px;
-  padding: 5px 0;
-  border-radius: 15%;
-  text-align: center;
-}
-
-.data .data__info {
 }
 
 .paging {
