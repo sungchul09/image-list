@@ -25,7 +25,11 @@ export default {
     },
   },
   created() {
+    this.$store.state.spinnerStatus = true;
     this.$store.dispatch("FETCH_IMAGEINFO", this.$route.params.id);
+  },
+  mounted() {
+    this.$store.state.spinnerStatus = false;
   },
   methods: {
     backspace() {
@@ -50,13 +54,13 @@ li {
 }
 
 .image img {
-  width: 100%;
-  height: 100%;
-  max-width: 500px;
-  max-height: 1000px;
+  max-height: 800px;
+  max-width: 800px;
 }
 
 .imageInfo {
+  margin: 0 500px;
+  padding: 0;
 }
 
 .imageInfo ul {
@@ -66,6 +70,7 @@ li {
 }
 
 .backspace {
+  margin: 0 500px;
   border: solid 2px black;
   width: 100px;
   text-align: center;
@@ -75,5 +80,22 @@ li {
 .backspace:hover {
   text-decoration: underline;
   cursor: pointer;
+}
+@media (max-width: 768px) {
+  .image img {
+    max-height: 800px;
+    max-width: 800px;
+    height: 100%;
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .image img {
+    max-height: 800px;
+    max-width: 800px;
+    width: 100%;
+    height: 100%;
+  }
 }
 </style>

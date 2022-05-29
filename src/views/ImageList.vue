@@ -54,11 +54,15 @@ export default {
     },
   },
   created() {
-    const page = this.$route.params.page;
-    const limit = this.$route.params.limit;
-    this.page = this.$route.params.page;
-    this.limit = this.$route.params.limit;
-    this.$store.dispatch("FETCH_IMAGELIST", { page, limit });
+      const page = this.$route.params.page;
+      const limit = this.$route.params.limit;
+      this.page = this.$route.params.page;
+      this.limit = this.$route.params.limit;
+      this.$store.state.spinnerStatus = true;
+      this.$store.dispatch("FETCH_IMAGELIST", { page, limit });
+  },
+  mounted() {
+    this.$store.state.spinnerStatus = false;
   },
   data() {
     return {
@@ -95,12 +99,14 @@ ul {
 
 .imageList {
   margin: 0px 300px;
+  display: flex;
+  flex-direction: column;
+  align-items: baseline;
 }
 
 .limit {
   display: flex;
   align-items: baseline;
-  justify-content: flex-end;
 }
 
 .limit p {
@@ -126,7 +132,7 @@ ul {
 }
 
 .data {
-  padding-bottom: 20px;
+  padding: 5px 0 20px 0;
   border-radius: 5%;
   width: 100%;
 
@@ -164,7 +170,7 @@ ul {
 
 .data__text__id a {
   text-decoration: none;
-  color: black;
+  color: grey;
 }
 
 .data__text__id a:hover {
@@ -190,6 +196,7 @@ ul {
   border: 1px solid #0064e6;
   color: white;
   background-color: #0064e6;
+  border-radius: 5%;
 }
 
 .paging {

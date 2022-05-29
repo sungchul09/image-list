@@ -21,7 +21,6 @@ export const router = new VueRouter({
         {
             path: '/imageList/:page/:limit',
             name: 'imageList',
-            props: true,
             component: () => import('@/views/ImageList.vue')
         },
         {
