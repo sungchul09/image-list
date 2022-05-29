@@ -1,6 +1,6 @@
 <template>
   <div class="header">
-    <a @click="goMainPage">IMAGE-LIST PAGE📸</a>
+    <a @click="goMainPage">🖼️ IMAGE-LIST PAGE</a>
   </div>
 </template>
 
@@ -8,8 +8,7 @@
 export default {
   methods: {
     goMainPage() {
-      this.$router.push("/");
-      this.$router.go();
+      this.$router.replace("/");
     },
   },
 };
@@ -23,7 +22,7 @@ export default {
   padding: 8px;
   font-weight: bold;
   font-size: 20px;
-  transition:transform 200ms ease-in-out;
+  transition: transform 200ms ease-in-out;
 }
 
 /* .header .router-link-exact-active {

@@ -11,10 +11,10 @@
 </template>
 
 <script>
-import HeaderMenu from "./components/headerMenu.vue";
-import LoadingSpinner from "./components/LoadingSpinner.vue";
-import StickyButton from "./components/StickyButton.vue";
-import FooterComponent from "./components/Footer.vue";
+import HeaderMenu from "@/components/common/headerMenu";
+import LoadingSpinner from "./components/LoadingSpinner";
+import StickyButton from "./components/StickyButton";
+import FooterComponent from "@/components/common/Footer.vue";
 
 export default {
   components: {
@@ -40,6 +40,6 @@ export default {
 body {
   padding: 0;
   margin: 0;
-  height: 100%;
+  display: block;
 }
 </style>

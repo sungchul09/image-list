@@ -1,7 +1,7 @@
 <template>
   <div class="btn">
     <div class="scroll" v-if="active">
-      <span @click="scrollUp">▲</span>
+      <span @click="scrollUp">☝️</span>
     </div>
     <div class="paging" v-if="active">
       <span @click="changePage(-1)">prev</span>
@@ -50,6 +50,7 @@ a {
   bottom: 5%;
   left: 100%;
   width: 20px;
+  margin-bottom: 50px;
 }
 
 .paging,

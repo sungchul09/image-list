@@ -5,19 +5,28 @@
         <img :src="imageInfo.download_url" :alt="imageInfo.url" />
       </a>
     </div>
-    <div class="infoAndBtn">
-      <div class="info">
-        <dl>
-          <dt>id</dt>
-          <dd>{{ imageInfo.id }}</dd>
-          <dt>author</dt>
-          <dd>{{ imageInfo.author }}</dd>
-          <dt>width</dt>
-          <dd>{{ imageInfo.width }}</dd>
-          <dt>height</dt>
-          <dd>{{ imageInfo.height }}</dd>
-        </dl>
+    <div class="info">
+      <div class="info__author">
+        {{ imageInfo.author }}
       </div>
+      <dl>
+        <dt>id</dt>
+        <dd>{{ imageInfo.id }}</dd>
+        <dt>width</dt>
+        <dd>{{ imageInfo.width }}</dd>
+        <dt>height</dt>
+        <dd>{{ imageInfo.height }}</dd>
+        <dt>url</dt>
+        <dd>
+          <a :href="imageInfo.url" target="_blank">{{ imageInfo.url }}</a>
+        </dd>
+        <dt>download</dt>
+        <dd>
+          <a :href="imageInfo.download_url" target="_blank">{{
+            imageInfo.download_url
+          }}</a>
+        </dd>
+      </dl>
     </div>
   </div>
 </template>
@@ -47,36 +56,44 @@ li {
 }
 
 .imageInfo {
-  min-height: 800px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 200px;
 }
 
 .image {
   text-align: center;
   background-color: black;
   font-size: 0;
+  width: 100%;
 }
 
 .image a {
 }
 
 .image img {
-  max-height: 800px;
-  max-width: 800px;
+  max-height: 900px;
+  max-width: 1000px;
 }
 
-.infoAndBtn {
-  margin: 0 300px;
+.info {
+  padding: 0;
+  margin: 5% 0 0 0;
   display: flex;
   flex-direction: column;
   justify-content: center;
 }
 
-.info {
-  padding: 0;
+.info .info__author {
+  font-size: 40px;
+  font-weight: bold;
 }
+
 .info dl {
+  margin-top: 100px;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: center;
   font-size: 20px;
 }
@@ -87,8 +104,15 @@ li {
   font-size: 20px;
 }
 
+.info dt:after {
+  content: "";
+  display: block;
+  width: 25%;
+  border-bottom: 1px solid #bcbcbc;
+}
+
 .info dd {
-  margin: 0 40px 0 0;
+  margin: 0 40px 10% 0;
 }
 
 @media screen and (max-width: 768px) {
@@ -108,7 +132,7 @@ li {
     justify-content: center;
   }
   .info dt {
-    margin-top: 20px;
+    margin-top: 30px;
   }
 }
 </style>

@@ -1,7 +1,7 @@
 <template>
   <div class="imageList">
     <div class="limit">
-      <p>페이지당 항목 수 :</p>
+      <p>📕 페이지당 항목 수 :</p>
       <select v-model="limit" @change="changeLimit">
         <option selected>10</option>
         <option>20</option>
@@ -34,7 +34,7 @@
             </span>
           </li>
           <li class="data__info">
-            <router-link :to="`/imageInfo/${data.id}`">상세정보</router-link>
+            <router-link :to="`/imageInfo/${data.id}`">🔍 상세정보</router-link>
           </li>
         </div>
       </ul>
@@ -135,6 +135,12 @@ ul {
 
 .data img {
   border-radius: 5%;
+  transition: all 150ms ease-in-out;
+}
+
+.data img:hover {
+  border-radius: 5%;
+  transform: translateY(-6px);
 }
 
 .data .data__img {
@@ -153,6 +159,7 @@ ul {
 
 .data__text__author a:hover {
   color: #0064e6;
+  font-weight: bold;
 }
 
 .data__text__id a {
@@ -162,6 +169,7 @@ ul {
 
 .data__text__id a:hover {
   cursor: pointer;
+  font-weight: bold;
   color: #0064e6;
 }
 
@@ -172,7 +180,6 @@ ul {
 .data .data__info a {
   text-decoration: none;
   color: #0064e6;
-  background-color: white;
   width: 50px;
   padding: 5px 10px;
   text-align: center;
@@ -180,10 +187,9 @@ ul {
 
 .data .data__info a:hover {
   cursor: pointer;
-  border: 1px solid #0064e6;
-  color: white;
-  background-color: #0064e6;
+  color: #0064e6;
   border-radius: 8%;
+  text-decoration: underline;
   transition: 150ms ease-in-out;
 }
 @media screen and (max-width: 1024px) {

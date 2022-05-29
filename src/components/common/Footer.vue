@@ -1,6 +1,6 @@
 <template>
   <div class="footer">
-    <p>Created by sc.yun</p>
+    <p>👔 Created by sc.yun</p>
   </div>
 </template>
 
@@ -9,6 +9,10 @@ export default {};
 </script>
 
 <style scoped>
+p {
+  margin: 0;
+  padding: 0;
+}
 .footer {
   color: #ffffff;
   background-color: #0064e6;
@@ -16,7 +20,7 @@ export default {};
   font-size: 20px;
   text-align: right;
   line-height: 150px;
-  height: 100%;
+  width: 100%;
 }
 
 .footer p {
@@ -24,7 +28,7 @@ export default {};
 }
 
 @media screen and (max-width: 768px) {
-  .footer {
+  .footer p {
     margin: 0;
     text-align: center;
   }
