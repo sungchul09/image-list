@@ -31,7 +31,7 @@ export const store = new Vuex.Store({
                 .then(response => {
                     const data = response.data;
                     data.map(v => {
-                        v.download_url = `https://picsum.photos/id/${v.id}/200`
+                        v.download_url = `https://picsum.photos/id/${v.id}/250`
                         return v;
                     });
                     commit('SET_IMAGELIST', response.data);

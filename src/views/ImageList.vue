@@ -115,21 +115,27 @@ ul {
   justify-content: flex-start;
 }
 
-.data {
-  border: 2px solid black;
+.imageData ul {
   margin-right: 20px;
 }
 
-.data ul {
+.data {
+  padding-bottom: 20px;
+  border-radius: 5%;
+  width: 100%;
+
+  box-shadow: 0 2px 4px 0 rgb(0 0 0 / 10%);
 }
 
 .data li {
+  margin: 10px;
 }
 
 .data a {
 }
 
 .data img {
+  border-radius: 5%;
 }
 
 .data .data__img {
