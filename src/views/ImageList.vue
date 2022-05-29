@@ -13,8 +13,8 @@
     </div>
     <div class="imageData">
       <ul v-for="(data, index) in imageList" :key="index">
-        <span class="dataList__content">
-          <li>
+        <div class="data">
+          <li class="data__image">
             <a
               :href="`https://picsum.photos/id/${data.id}/${data.width}/${data.height}`"
               target="_blank"
@@ -22,14 +22,16 @@
               <img :src="data.download_url" :alt="data.url" />
             </a>
           </li>
-          <li>
+          <li class="data__author">
             <a :href="data.url" target="_blank">{{ data.author }}</a>
           </li>
-          <li>#{{ data.id }}</li>
-          <li>
+          <li class="data__id">
+            <p>#{{ data.id }}</p>
+          </li>
+          <li class="data__info">
             <router-link :to="`/imageInfo/${data.id}`">상세정보</router-link>
           </li>
-        </span>
+        </div>
       </ul>
     </div>
     <div class="paging">
@@ -113,16 +115,57 @@ ul {
   justify-content: flex-start;
 }
 
-.imageData__content {
+.data {
+  border: 2px solid black;
+  margin-right: 20px;
 }
 
-.imageData__content li {
+.data ul {
 }
 
-.imageData__content a {
+.data li {
 }
 
-.imageData__content img {
+.data a {
+}
+
+.data img {
+}
+
+.data .data__img {
+}
+
+.data .data__author a {
+  text-decoration: none;
+  color: black;
+}
+
+.data .data__author a:hover {
+  color: #0064e6;
+}
+
+.data .data__id p {
+  border: 1px solid #0064e6;
+  color: #0064e6;
+  background-color: white;
+  width: 50px;
+  padding: 5px 0;
+  border-radius: 20%;
+  text-align: center;
+}
+
+.data .data__id p:hover {
+  cursor: pointer;
+  border: 1px solid #0064e6;
+  color: white;
+  background-color: #0064e6;
+  width: 50px;
+  padding: 5px 0;
+  border-radius: 15%;
+  text-align: center;
+}
+
+.data .data__info {
 }
 
 .paging {
