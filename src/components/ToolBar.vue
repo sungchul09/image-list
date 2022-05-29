@@ -1,11 +1,18 @@
 <template>
   <div class="header">
-    <router-link to="/">메인</router-link>
+    <a @click="goMainPage">IMAGE-LIST PAGE📸</a>
   </div>
 </template>
 
 <script>
-export default {};
+export default {
+  methods: {
+    goMainPage() {
+      this.$router.push('/')
+      this.$router.go();
+    },
+  },
+};
 </script>
 
 <style scoped>

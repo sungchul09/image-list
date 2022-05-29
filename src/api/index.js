@@ -4,16 +4,26 @@ const config = {
     baseUrl: process.env.VUE_APP_API_URL,
 }
 
-function fetchListCount(page, limit) {
-    return axios.get(`${config.baseUrl}/v2/list?page=${page}&limit=${limit}`);
+async function fetchImageList(page, limit) {
+    try {
+        const response = await axios.get(`${config.baseUrl}/v2/list?page=${page}&limit=${limit}`);
+        response.data.map(v => v.download_url = `https://picsum.photos/id/${v.id}/250`);
+        return response;
+    } catch (error) {
+        console.log(error);
+    }
 }
 
-function fetchImageList(page, limit) {
-    return axios.get(`${config.baseUrl}/v2/list?page=${page}&limit=${limit}`);
+async function fetchImageInfo(id) {
+    try {
+        const response = await axios.get(`${config.baseUrl}/id/${id}/info`);
+        const width = parseInt(response.data.width);
+        const height = parseInt(response.data.height);
+        response.data.download_url = `https://picsum.photos/id/${id}/${width}/${height}`
+        return response;
+    } catch (error) {
+        console.log(error);
+    }
 }
 
-function fetchImageInfo(id) {
-    return axios.get(`${config.baseUrl}/id/${id}/info`);
-}
-
-export { fetchListCount, fetchImageList, fetchImageInfo };
+export { fetchImageList, fetchImageInfo };

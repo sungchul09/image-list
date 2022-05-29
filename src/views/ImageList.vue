@@ -39,10 +39,6 @@
         </div>
       </ul>
     </div>
-    <div class="paging">
-      <div class="prevBtn" @click="changePage(-1)">prev</div>
-      <div class="nextBtn" @click="changePage(1)">next</div>
-    </div>
   </div>
 </template>
 
@@ -54,36 +50,25 @@ export default {
     },
   },
   created() {
-      const page = this.$route.params.page;
-      const limit = this.$route.params.limit;
-      this.page = this.$route.params.page;
-      this.limit = this.$route.params.limit;
-      this.$store.state.spinnerStatus = true;
-      this.$store.dispatch("FETCH_IMAGELIST", { page, limit });
+    const page = this.$route.params.page;
+    const limit = this.$route.params.limit;
+    this.limit = limit;
+    this.$store.state.spinnerStatus = true;
+    this.$store.dispatch("FETCH_IMAGELIST", { page, limit });
   },
   mounted() {
     this.$store.state.spinnerStatus = false;
   },
   data() {
     return {
-      page: 0,
-      limit: 0,
+      limit: "",
     };
   },
   methods: {
     changeLimit() {
-      this.repalceAndGo();
-    },
-    changePage(value) {
-      if (this.page <= 1 && value === -1) {
-        alert("첫 페이지입니다.");
-        return;
-      }
-      this.page = Number.parseInt(this.page) + value;
-      this.repalceAndGo();
-    },
-    repalceAndGo() {
-      this.$router.replace(`/imageList/${this.page}/${this.limit}`);
+      const page = this.$route.params.page;
+      this.$route.params.limit = this.limit;
+      this.$router.replace(`/imageList/${page}/${this.limit}`);
       this.$router.go();
     },
   },
@@ -98,7 +83,7 @@ ul {
 }
 
 .imageList {
-  margin: 0px 300px;
+  margin: 0px 15%;
   display: flex;
   flex-direction: column;
   align-items: baseline;
@@ -198,32 +183,13 @@ ul {
   background-color: #0064e6;
   border-radius: 5%;
 }
-
-.paging {
-  position: fixed;
-  right: 0;
-  bottom: 0;
-  transform: translate(-50%, -50%);
-  display: flex;
-  flex-direction: column;
-}
-
-.paging div {
-  color: white;
-  background-color: #0064e6;
-
-  width: 50px;
-  height: 50px;
-  text-align: center;
-  line-height: 50px;
-  border-radius: 50%;
-  margin: 10px;
-}
-
-.paging div:hover {
-  cursor: pointer;
-  border: 1px solid #0064e6;
-  background-color: white;
-  color: #0064e6;
+@media screen and (max-width: 1024px) {
+  .imageList {
+    flex-direction: column;
+    align-items: center;
+  }
+  .imageData {
+    justify-content: center;
+  }
 }
 </style>

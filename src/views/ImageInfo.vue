@@ -1,19 +1,25 @@
 <template>
-  <div>
+  <div class="imageInfo">
     <div class="image">
       <a :href="imageInfo.url" target="_blank">
         <img :src="imageInfo.download_url" :alt="imageInfo.url" />
       </a>
     </div>
-    <div class="imageInfo">
-      <ul>
-        <li>id: {{ imageInfo.id }}</li>
-        <li>author: {{ imageInfo.author }}</li>
-        <li>width: {{ imageInfo.width }}</li>
-        <li>height: {{ imageInfo.height }}</li>
-      </ul>
+    <div class="infoAndBtn">
+      <div class="info">
+        <dl>
+          <dt>id</dt>
+          <dd>{{ imageInfo.id }}</dd>
+          <dt>author</dt>
+          <dd>{{ imageInfo.author }}</dd>
+          <dt>width</dt>
+          <dd>{{ imageInfo.width }}</dd>
+          <dt>height</dt>
+          <dd>{{ imageInfo.height }}</dd>
+        </dl>
+      </div>
+      <div class="backspace" @click="backspace">뒤로가기</div>
     </div>
-    <div class="backspace" @click="backspace">뒤로가기</div>
   </div>
 </template>
 
@@ -25,6 +31,7 @@ export default {
     },
   },
   created() {
+    window.scrollTo(0, 0);
     this.$store.state.spinnerStatus = true;
     this.$store.dispatch("FETCH_IMAGEINFO", this.$route.params.id);
   },
@@ -44,6 +51,10 @@ li {
   list-style: none;
 }
 
+.imageInfo {
+  min-height: 1000px;
+}
+
 .image {
   text-align: center;
   background-color: black;
@@ -58,30 +69,40 @@ li {
   max-width: 800px;
 }
 
-.imageInfo {
-  margin: 0 500px;
+.infoAndBtn {
+  margin: 0 300px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.info {
   padding: 0;
 }
-
-.imageInfo ul {
+.info dl {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
 }
 
-.imageInfo li {
+.info dt {
+  margin-right: 10px;
+  color: grey;
+}
+
+.info dd {
+  margin: 0 40px 0 0;
 }
 
 .backspace {
-  margin: 0 500px;
-  border: solid 2px black;
-  width: 100px;
-  text-align: center;
-  padding: 5px;
+  text-align: right;
 }
 
 .backspace:hover {
   text-decoration: underline;
   cursor: pointer;
 }
-@media (max-width: 768px) {
+@media screen and (max-width: 768px) {
   .image img {
     max-height: 800px;
     max-width: 800px;
@@ -90,7 +111,7 @@ li {
   }
 }
 
-@media (max-width: 480px) {
+@media screen and (max-width: 480px) {
   .image img {
     max-height: 800px;
     max-width: 800px;

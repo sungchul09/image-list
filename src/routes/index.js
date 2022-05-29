@@ -10,7 +10,7 @@ export const router = new VueRouter({
     routes: [
         {
             path: '/',
-            redirect: to => {
+            redirect: (to) => {
                 to.params.page = 1;
                 to.params.limit = 300;
                 return {
@@ -21,6 +21,7 @@ export const router = new VueRouter({
         {
             path: '/imageList/:page/:limit',
             name: 'imageList',
+            // component: ImageList
             component: () => import('@/views/ImageList.vue')
         },
         {
