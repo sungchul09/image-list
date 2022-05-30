@@ -1,6 +1,6 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
-import { fetchImageList, fetchImageInfo } from '@/api/index.js';
+import { fetchImageList, fetchImageInfo } from '@/api/index';
 
 Vue.use(Vuex);
 
