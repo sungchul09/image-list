@@ -25,8 +25,8 @@ export default {
   display: inline-block;
   position: relative;
   left: 6px;
-  width: 43px;
-  background: #bde4ff;
+  width: 23px;
+  background: black;
   border-radius: 15%;
   animation: lds-facebook 1.2s cubic-bezier(0, 0.5, 0.5, 1) infinite;
 }
