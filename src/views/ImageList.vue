@@ -48,12 +48,12 @@ export default {
     ...mapGetters({ imageList: 'getImageList' }),
   },
   created() {
-    window.scrollTo(0, 0);
     const page = this.$route.params.page;
     const limit = this.$route.params.limit;
-    this.limit = limit;
+    window.scrollTo(0, 0);
     this.$store.state.spinnerStatus = true;
     this.$store.state.btnStatus = true;
+    this.limit = this.$route.params.limit;
     this.$store.dispatch('FETCH_IMAGELIST', { page, limit });
   },
   mounted() {
@@ -61,14 +61,14 @@ export default {
   },
   data() {
     return {
-      limit: '',
+      limit: 300,
     };
   },
   methods: {
     changeLimit() {
       const page = this.$route.params.page;
       this.$route.params.limit = this.limit;
-      this.$router.replace(`/imageList/${page}/${this.limit}`);
+      this.$router.push(`/imageList/${page}/${this.limit}`);
       this.$router.go();
     },
   },

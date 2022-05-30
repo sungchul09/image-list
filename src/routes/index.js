@@ -5,14 +5,19 @@ import ImageInfo from '@/views/ImageInfo';
 
 Vue.use(VueRouter);
 
+const defaultValue = {
+  page: 1,
+  limit: 300,
+};
+
 export const router = new VueRouter({
   mode: 'history',
   routes: [
     {
       path: '/',
       redirect: (to) => {
-        to.params.page = 1;
-        to.params.limit = 30;
+        to.params.page = defaultValue.page;
+        to.params.limit = defaultValue.limit;
         return {
           name: 'imageList',
         };

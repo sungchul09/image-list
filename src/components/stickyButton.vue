@@ -34,7 +34,7 @@ export default {
       }
       page = Number.parseInt(page) + value;
       this.$route.params.page = page;
-      this.$router.replace(`/imageList/${page}/${limit}`);
+      this.$router.push(`/imageList/${page}/${limit}`);
       this.$router.go();
     },
   },

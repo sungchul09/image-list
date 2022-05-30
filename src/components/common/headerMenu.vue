@@ -1,14 +1,15 @@
 <template>
   <div class="header">
-    <a @click="goMainPage">🖼️ IMAGE-LIST PAGE</a>
+    <a @click="mainPage">🖼️ IMAGE-LIST PAGE</a>
   </div>
 </template>
 
 <script>
 export default {
   methods: {
-    goMainPage() {
-      this.$router.replace("/");
+    mainPage() {
+      this.$router.push('//');
+      this.$router.go();
     },
   },
 };
@@ -51,4 +52,3 @@ export default {
   }
 }
 </style>
-
