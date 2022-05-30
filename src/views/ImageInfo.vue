@@ -22,9 +22,7 @@
         </dd>
         <dt>download</dt>
         <dd>
-          <a :href="imageInfo.download_url" target="_blank">{{
-            imageInfo.download_url
-          }}</a>
+          <a :href="imageInfo.download_url" target="_blank">{{ imageInfo.download_url }}</a>
         </dd>
       </dl>
     </div>
@@ -32,17 +30,17 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex';
+
 export default {
   computed: {
-    imageInfo() {
-      return this.$store.state.imageInfo;
-    },
+    ...mapGetters({ imageInfo: 'getImageInfo' }),
   },
   created() {
     window.scrollTo(0, 0);
     this.$store.state.spinnerStatus = true;
     this.$store.state.btnStatus = false;
-    this.$store.dispatch("FETCH_IMAGEINFO", this.$route.params.id);
+    this.$store.dispatch('FETCH_IMAGEINFO', this.$route.params.id);
   },
   mounted() {
     this.$store.state.spinnerStatus = false;
@@ -105,7 +103,7 @@ li {
 }
 
 .info dt:after {
-  content: "";
+  content: '';
   display: block;
   width: 25%;
   border-bottom: 1px solid #bcbcbc;

@@ -27,8 +27,7 @@
               <a :href="data.url" target="_blank">{{ data.author }}</a>
             </span>
             <span class="data__text__id">
-              <a
-                :href="`https://picsum.photos/id/${data.id}/${data.width}/${data.height}`"
+              <a :href="`https://picsum.photos/id/${data.id}/${data.width}/${data.height}`"
                 >#{{ data.id }}</a
               >
             </span>
@@ -43,11 +42,10 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex';
 export default {
   computed: {
-    imageList() {
-      return this.$store.state.imageList;
-    },
+    ...mapGetters({ imageList: 'getImageList' }),
   },
   created() {
     window.scrollTo(0, 0);
@@ -56,14 +54,14 @@ export default {
     this.limit = limit;
     this.$store.state.spinnerStatus = true;
     this.$store.state.btnStatus = true;
-    this.$store.dispatch("FETCH_IMAGELIST", { page, limit });
+    this.$store.dispatch('FETCH_IMAGELIST', { page, limit });
   },
   mounted() {
     this.$store.state.spinnerStatus = false;
   },
   data() {
     return {
-      limit: "",
+      limit: '',
     };
   },
   methods: {

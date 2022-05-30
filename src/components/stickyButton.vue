@@ -23,13 +23,13 @@ export default {
   },
   methods: {
     scrollUp() {
-      window.scrollTo({ top: 0, behavior: "smooth" });
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     },
     changePage(value) {
       let page = this.$route.params.page;
       let limit = this.$route.params.limit;
       if (page <= 1 && value === -1) {
-        alert("첫 페이지입니다.");
+        alert('첫 페이지입니다.');
         return;
       }
       page = Number.parseInt(page) + value;
