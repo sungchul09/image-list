@@ -46,7 +46,6 @@ export const store = new Vuex.Store({
       return response;
     },
     async FETCH_IMAGEINFO({ commit }, id) {
-      console.log(id);
       const response = await fetchImageInfo(id);
       commit('SET_IMAGEINFO', response.data);
       return response;

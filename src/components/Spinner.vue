@@ -17,19 +17,17 @@ export default {
 </script>
 <style>
 .lds-facebook {
-  display: inline-block;
-  position: relative;
-  height: 64px;
-  top: 47%;
-  left: 47%;
-  margin: 15% 0;
+  position: absolute;
+  top: 45%;
+  left: 45%;
 }
 .lds-facebook div {
   display: inline-block;
   position: relative;
   left: 6px;
-  width: 13px;
+  width: 43px;
   background: #bde4ff;
+  border-radius: 15%;
   animation: lds-facebook 1.2s cubic-bezier(0, 0.5, 0.5, 1) infinite;
 }
 .lds-facebook div:nth-child(1) {
@@ -47,12 +45,12 @@ export default {
 @keyframes lds-facebook {
   0% {
     top: 6px;
-    height: 51px;
+    height: 100px;
   }
   50%,
   100% {
     top: 19px;
-    height: 25px;
+    height: 50px;
   }
 }
 </style>

@@ -34,11 +34,21 @@ import { mapGetters } from 'vuex';
 
 export default {
   computed: {
-    ...mapGetters({ imgData: 'getImageInfo' }),
+    imgData() {
+      const getters = this.$store.getters.getImageInfo;
+      console.log(getters);
+      return getters;
+    },
   },
   created() {
     window.scrollTo(0, 0);
+    this.$store.commit('SET_IMAGEINFO', {});
     this.$store.dispatch('FETCH_IMAGEINFO', this.$route.params.id);
+  },
+  data() {
+    return {
+      rendering: false,
+    };
   },
 };
 </script>

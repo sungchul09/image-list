@@ -1,7 +1,7 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
 // import ImageList from '@/views/ImageList';
-import ImageInfo from '@/views/ImageInfo';
+//import ImageInfo from '@/views/ImageInfo';
 import { store } from '@/store/index';
 
 Vue.use(VueRouter);
@@ -33,7 +33,8 @@ export const router = new VueRouter({
     {
       path: '/imageInfo/:id',
       name: 'imageInfo',
-      component: ImageInfo,
+      //component: ImageInfo,
+      component: () => import('@/views/ImageInfo.vue'),
     },
   ],
 });
@@ -46,7 +47,7 @@ router.beforeEach((to, from, next) => {
 router.afterEach((to, from) => {
   setTimeout(() => {
     store.commit('endSpinner');
-  }, 500);
+  }, 1000);
   if (to.name === 'imageInfo') {
     store.commit('backBtn');
   } else if (to.name === 'imageList') {
