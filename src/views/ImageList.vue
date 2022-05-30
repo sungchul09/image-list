@@ -11,6 +11,7 @@
             >
               <img
                 :src="data.download_url"
+                alt="image_file"
                 onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1594322436404-5a0526db4d13?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=250&q=250';"
               />
             </a>
@@ -22,6 +23,7 @@
             <span class="data__text__id">
               <a
                 :href="`https://picsum.photos/id/${data.id}/${data.width}/${data.height}`"
+                target="_blank"
                 >#{{ data.id }}</a
               >
             </span>
@@ -51,14 +53,6 @@ export default {
     const page = this.$route.params.page;
     const limit = this.$route.params.limit;
     this.$store.dispatch("FETCH_IMAGELIST", { page, limit });
-  },
-  methods: {
-    imgError(e) {
-      // e.onerror = "";
-      e.src = "../assets/images/error.png";
-      console.log(e);
-      return true;
-    },
   },
 };
 </script>
@@ -127,19 +121,19 @@ ul {
 }
 
 .data__text__author a:hover {
-  color: #0064e6;
+  color: var(--blue-color);
   font-weight: bold;
 }
 
 .data__text__id a {
   text-decoration: none;
-  color: grey;
+  color: var(--grey-color);
 }
 
 .data__text__id a:hover {
   cursor: pointer;
   font-weight: bold;
-  color: #0064e6;
+  color: var(--blue-color);
 }
 
 .data .data__info {
@@ -148,7 +142,7 @@ ul {
 
 .data .data__info a {
   text-decoration: none;
-  color: #0064e6;
+  color: var(--blue-color);
   width: 50px;
   padding: 5px 10px;
   text-align: center;
@@ -156,7 +150,7 @@ ul {
 
 .data .data__info a:hover {
   cursor: pointer;
-  color: #0064e6;
+  color: var(--blue-color);
   border-radius: 8%;
   text-decoration: underline;
   transition: 150ms ease-in-out;

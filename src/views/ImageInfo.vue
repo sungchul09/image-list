@@ -2,7 +2,11 @@
   <div class="imageInfo">
     <div class="image">
       <a :href="imgData.url" target="_blank">
-        <img :src="imgData.download_url" :alt="imgData.url" />
+        <img
+          :src="imgData.download_url"
+          alt="image_file"
+          onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1594322436404-5a0526db4d13?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=250&q=250';"
+        />
       </a>
     </div>
     <div class="info">
@@ -22,7 +26,9 @@
         </dd>
         <dt>download</dt>
         <dd>
-          <a :href="imgData.download_url" target="_blank">{{ imgData.download_url }}</a>
+          <a :href="imgData.download_url" target="_blank">{{
+            imgData.download_url
+          }}</a>
         </dd>
       </dl>
     </div>
@@ -30,20 +36,16 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex';
+import { mapGetters } from "vuex";
 
 export default {
   computed: {
-    imgData() {
-      const getters = this.$store.getters.getImageInfo;
-      console.log(getters);
-      return getters;
-    },
+    ...mapGetters({ imgData: "getImageInfo" }),
   },
   created() {
     window.scrollTo(0, 0);
-    this.$store.commit('SET_IMAGEINFO', {});
-    this.$store.dispatch('FETCH_IMAGEINFO', this.$route.params.id);
+    this.$store.commit("SET_IMAGEINFO", {});
+    this.$store.dispatch("FETCH_IMAGEINFO", this.$route.params.id);
   },
   data() {
     return {
@@ -67,7 +69,7 @@ li {
 
 .image {
   text-align: center;
-  background-color: black;
+  background-color: var(--black-color);;
   font-size: 0;
   width: 100%;
 }
@@ -103,15 +105,15 @@ li {
 
 .info dt {
   margin-right: 10px;
-  color: grey;
+  color: var(--grey-color);
   font-size: 20px;
 }
 
 .info dt:after {
-  content: '';
+  content: "";
   display: block;
   width: 25%;
-  border-bottom: 1px solid #bcbcbc;
+  border-bottom: 1px solid var(--grey-color);
 }
 
 .info dd {

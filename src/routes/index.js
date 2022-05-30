@@ -1,7 +1,5 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
-// import ImageList from '@/views/ImageList';
-//import ImageInfo from '@/views/ImageInfo';
 import { store } from '@/store/index';
 
 Vue.use(VueRouter);
@@ -20,22 +18,24 @@ export const router = new VueRouter({
         to.params.page = defaultValue.page;
         to.params.limit = defaultValue.limit;
         return {
-          name: 'imageList',
+          name: 'imageList'
         };
       },
     },
     {
       path: '/imageList/:page/:limit',
       name: 'imageList',
-      // component: ImageList
       component: () => import('@/views/ImageList.vue'),
     },
     {
       path: '/imageInfo/:id',
       name: 'imageInfo',
-      //component: ImageInfo,
       component: () => import('@/views/ImageInfo.vue'),
     },
+    {
+      path: '*',
+      component: () => import('@/views/NotFountPage.vue'),
+    }
   ],
 });
 

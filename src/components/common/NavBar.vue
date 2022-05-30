@@ -8,7 +8,10 @@
 export default {
   methods: {
     mainPage() {
-      this.$router.push('/');
+      this.$router.replace("/");
+      if (this.$route.name !== "imageInfo") {
+        this.$router.go();
+      }
     },
   },
 };
@@ -16,8 +19,8 @@ export default {
 
 <style scoped>
 .header {
-  color: #ffffff;
-  background-color: #0064e6;
+  color: var(--white-color);
+  background-color: var(--blue-color);
   display: flex;
   padding: 8px;
   font-weight: bold;
@@ -30,7 +33,7 @@ export default {
 } */
 
 .header a {
-  color: #ffffff;
+  color: var(--white-color);
   text-decoration: none;
   margin-right: 20px;
 }
