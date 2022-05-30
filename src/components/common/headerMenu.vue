@@ -8,8 +8,7 @@
 export default {
   methods: {
     mainPage() {
-      this.$router.push('//');
-      this.$router.go();
+      this.$router.push('/');
     },
   },
 };

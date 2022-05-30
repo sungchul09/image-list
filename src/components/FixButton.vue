@@ -1,6 +1,6 @@
 <template>
   <div class="btn">
-    <div v-if="pageBtn">
+    <div class="pageBtn" v-if="pageBtn">
       <div class="scroll">
         <span @click="scrollUp">☝️</span>
       </div>
@@ -10,7 +10,7 @@
       </div>
     </div>
     <div class="paging" v-else>
-      <router-link to="/">BACK</router-link>
+      <span @click="backBtn">BACK</span>
     </div>
   </div>
 </template>
@@ -39,6 +39,9 @@ export default {
       this.$route.params.page++;
       this.movePage();
     },
+    backBtn() {
+      this.$router.go(-1);
+    },
     movePage() {
       this.$router.push(`/imageList/${this.$route.params.page}/${this.$route.params.limit}`);
       this.$router.go();
@@ -51,28 +54,23 @@ export default {
 a {
   text-decoration: none;
 }
-.btn {
-  position: sticky;
-  bottom: 5%;
-  left: 100%;
-  width: 20px;
-  margin-bottom: 50px;
-}
 
+.btn,
+.pageBtn,
+.scroll,
 .paging,
-.scroll {
+.back {
   position: sticky;
   bottom: 5%;
-  left: 100%;
+  left: 95%;
+  width: 20px;
   display: flex;
   flex-direction: column;
   align-items: flex-end;
-  width: 20px;
+  margin-bottom: 5%;
 }
 
-.paging span,
-a,
-.scroll span {
+span {
   color: #0064e6;
   background-color: white;
   border: 1px solid #0064e6;
@@ -85,13 +83,16 @@ a,
   font-size: 15px;
 }
 
-.paging span:hover,
-a:hover,
-.scroll span:hover {
+span:hover {
   cursor: pointer;
   border: 1px solid #bde4ff;
   background-color: #bde4ff;
   color: #213039;
   transition: 150ms ease-in-out;
+}
+
+span a {
+  width: 50px;
+  height: 50px;
 }
 </style>

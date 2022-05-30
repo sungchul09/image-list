@@ -1,16 +1,6 @@
 <template>
   <div class="imageList">
-    <div class="limit">
-      <p>📕 페이지당 항목 수 :</p>
-      <select v-model="limit" @change="changeLimit">
-        <option selected>10</option>
-        <option>20</option>
-        <option>50</option>
-        <option>75</option>
-        <option>100</option>
-        <option>300</option>
-      </select>
-    </div>
+    <limit-list></limit-list>
     <div class="imageData">
       <ul v-for="(data, index) in imageList" :key="index">
         <div class="data">
@@ -43,7 +33,11 @@
 
 <script>
 import { mapGetters } from 'vuex';
+import LimitList from '@/components/LimitList.vue';
 export default {
+  components: {
+    LimitList,
+  },
   computed: {
     ...mapGetters({ imageList: 'getImageList' }),
   },
@@ -51,21 +45,7 @@ export default {
     const page = this.$route.params.page;
     const limit = this.$route.params.limit;
     window.scrollTo(0, 0);
-    this.limit = this.$route.params.limit;
     this.$store.dispatch('FETCH_IMAGELIST', { page, limit });
-  },
-  data() {
-    return {
-      limit: 300,
-    };
-  },
-  methods: {
-    changeLimit() {
-      const page = this.$route.params.page;
-      this.$route.params.limit = this.limit;
-      this.$router.push(`/imageList/${page}/${this.limit}`);
-      this.$router.go();
-    },
   },
 };
 </script>
@@ -83,23 +63,6 @@ ul {
   flex-direction: column;
   align-items: baseline;
 }
-
-.limit {
-  display: flex;
-  align-items: baseline;
-}
-
-.limit p {
-  margin-right: 10px;
-}
-
-.limit select {
-  font-size: 15px;
-  font-weight: bold;
-  text-align: center;
-  width: 150px;
-}
-
 .imageData {
   display: flex;
   flex-direction: row;

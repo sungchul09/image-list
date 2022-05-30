@@ -1,28 +1,28 @@
 <template>
   <div class="imageInfo">
     <div class="image">
-      <a :href="imageInfo.url" target="_blank">
-        <img :src="imageInfo.download_url" :alt="imageInfo.url" />
+      <a :href="imgData.url" target="_blank">
+        <img :src="imgData.download_url" :alt="imgData.url" />
       </a>
     </div>
     <div class="info">
       <div class="info__author">
-        {{ imageInfo.author }}
+        {{ imgData.author }}
       </div>
       <dl>
         <dt>id</dt>
-        <dd>{{ imageInfo.id }}</dd>
+        <dd>{{ imgData.id }}</dd>
         <dt>width</dt>
-        <dd>{{ imageInfo.width }}</dd>
+        <dd>{{ imgData.width }}</dd>
         <dt>height</dt>
-        <dd>{{ imageInfo.height }}</dd>
+        <dd>{{ imgData.height }}</dd>
         <dt>url</dt>
         <dd>
-          <a :href="imageInfo.url" target="_blank">{{ imageInfo.url }}</a>
+          <a :href="imgData.url" target="_blank">{{ imgData.url }}</a>
         </dd>
         <dt>download</dt>
         <dd>
-          <a :href="imageInfo.download_url" target="_blank">{{ imageInfo.download_url }}</a>
+          <a :href="imgData.download_url" target="_blank">{{ imgData.download_url }}</a>
         </dd>
       </dl>
     </div>
@@ -34,7 +34,7 @@ import { mapActions, mapGetters } from 'vuex';
 
 export default {
   computed: {
-    ...mapGetters({ imageInfo: 'getImageInfo' }),
+    ...mapGetters({ imgData: 'getImageInfo' }),
   },
   created() {
     window.scrollTo(0, 0);
