@@ -1,34 +1,32 @@
 <template>
   <div class="imageInfo">
     <div class="image">
-      <a :href="imgData.url" target="_blank">
+      <a :href="imageInfo.url" target="_blank">
         <img
-          :src="imgData.download_url"
+          :src="imageInfo.download_url"
           alt="image_file"
-          onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1594322436404-5a0526db4d13?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=250&q=250';"
+          @error="imageError"
         />
       </a>
     </div>
     <div class="info">
       <div class="info__author">
-        {{ imgData.author }}
+        {{ imageInfo.author }}
       </div>
       <dl>
         <dt>id</dt>
-        <dd>{{ imgData.id }}</dd>
+        <dd>{{ imageInfo.id }}</dd>
         <dt>width</dt>
-        <dd>{{ imgData.width }}</dd>
+        <dd>{{ imageInfo.width }}</dd>
         <dt>height</dt>
-        <dd>{{ imgData.height }}</dd>
+        <dd>{{ imageInfo.height }}</dd>
         <dt>url</dt>
         <dd>
-          <a :href="imgData.url" target="_blank">{{ imgData.url }}</a>
+          <a :href="imageInfo.url" target="_blank">{{ imageInfo.url }}</a>
         </dd>
         <dt>download</dt>
         <dd>
-          <a :href="imgData.download_url" target="_blank">{{
-            imgData.download_url
-          }}</a>
+          <a :href="imageInfo.link" target="_blank">{{ imageInfo.link }}</a>
         </dd>
       </dl>
     </div>
@@ -40,7 +38,7 @@ import { mapGetters } from "vuex";
 
 export default {
   computed: {
-    ...mapGetters({ imgData: "getImageInfo" }),
+    ...mapGetters({ imageInfo: "getImageInfo" }),
   },
   created() {
     window.scrollTo(0, 0);
@@ -50,7 +48,16 @@ export default {
   data() {
     return {
       rendering: false,
+      errorSrc:
+        "https://images.unsplash.com/photo-1594322436404-5a0526db4d13?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=250&q=250",
     };
+  },
+  methods: {
+    imageError(e) {
+      console.log(e);
+      e.target.onerror = null;
+      e.target.src = this.errorSrc;
+    },
   },
 };
 </script>
@@ -69,7 +76,7 @@ li {
 
 .image {
   text-align: center;
-  background-color: var(--black-color);;
+  background-color: var(--black-color);
   font-size: 0;
   width: 100%;
 }

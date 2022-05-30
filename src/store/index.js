@@ -20,18 +20,26 @@ export const store = new Vuex.Store({
     },
   },
   mutations: {
+    // 이미지 데이터
     SET_IMAGELIST: function (state, data) {
+      data.map((v) => {
+        v.download_url = `${process.env.VUE_APP_API_URL}id/${v.id}/250`;
+        v.link = `${process.env.VUE_APP_API_URL}id/${v.id}/${v.width}/${v.height}`
+      });
       state.imageList = data;
     },
     SET_IMAGEINFO: function (state, data) {
+      data.link = `${process.env.VUE_APP_API_URL}id/${data.id}/${data.width}/${data.height}`;
       state.imageInfo = data;
     },
+    // Spinner
     startSpinner(state) {
       state.loadingStatus = true;
     },
     endSpinner(state) {
       state.loadingStatus = false;
     },
+    // 고정버튼
     pageBtn(state) {
       state.pageBtn = true;
     },

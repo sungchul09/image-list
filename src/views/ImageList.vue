@@ -5,14 +5,11 @@
       <ul v-for="(data, index) in imageList" :key="index">
         <div class="data">
           <li class="data__image">
-            <a
-              :href="`https://picsum.photos/id/${data.id}/${data.width}/${data.height}`"
-              target="_blank"
-            >
+            <a :href="data.link" target="_blank">
               <img
                 :src="data.download_url"
                 alt="image_file"
-                onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1594322436404-5a0526db4d13?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=250&q=250';"
+                @error="imageError"
               />
             </a>
           </li>
@@ -21,11 +18,7 @@
               <a :href="data.url" target="_blank">{{ data.author }}</a>
             </span>
             <span class="data__text__id">
-              <a
-                :href="`https://picsum.photos/id/${data.id}/${data.width}/${data.height}`"
-                target="_blank"
-                >#{{ data.id }}</a
-              >
+              <a :href="data.link" target="_blank">#{{ data.id }}</a>
             </span>
           </li>
           <li class="data__info">
@@ -53,6 +46,19 @@ export default {
     const page = this.$route.params.page;
     const limit = this.$route.params.limit;
     this.$store.dispatch("FETCH_IMAGELIST", { page, limit });
+  },
+  data() {
+    return {
+      errorSrc:
+        "https://images.unsplash.com/photo-1594322436404-5a0526db4d13?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=250&q=250",
+    };
+  },
+  methods: {
+    imageError(e) {
+      console.log(e);
+      e.target.onerror = null;
+      e.target.src = this.errorSrc;
+    },
   },
 };
 </script>
