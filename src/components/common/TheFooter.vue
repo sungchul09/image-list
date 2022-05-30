@@ -14,8 +14,8 @@ p {
   padding: 0;
 }
 .footer {
-  color: #ffffff;
-  background-color: #0064e6;
+  color: var(--white-color);
+  background-color: var(--blue-color);
   font-weight: bold;
   font-size: 20px;
   text-align: right;

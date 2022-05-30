@@ -1,29 +1,36 @@
 <template>
   <div id="app">
-    <nav-bar></nav-bar>
+    <the-navbar></the-navbar>
     <router-view></router-view>
     <spinner :loading="$store.state.loadingStatus"></spinner>
     <fix-button :pageBtn="$store.state.pageBtn"></fix-button>
-    <footer-component></footer-component>
+    <the-footer></the-footer>
   </div>
 </template>
 
 <script>
-import NavBar from '@/components/common/NavBar';
-import Spinner from '@/components/Spinner';
-import FixButton from '@/components/common/FixButton';
-import FooterComponent from '@/components/common/Footer';
+import TheNavbar from "@/components/common/TheNavbar";
+import Spinner from "@/components/Spinner";
+import FixButton from "@/components/common/FixButton";
+import TheFooter from "@/components/common/TheFooter";
 export default {
   components: {
-    NavBar,
+    TheNavbar,
     Spinner,
     FixButton,
-    FooterComponent,
+    TheFooter,
   },
 };
 </script>
 
 <style>
+:root {
+  --black-color: #000000;
+  --white-color: #efefef;
+  --blue-color: #0064e6;
+  --grey-color: #9399af;
+}
+
 * {
   box-sizing: border-box;
 }

@@ -1,8 +1,11 @@
 <template>
-  <div class="lds-facebook" v-if="loading">
+  <!--   <div class="lds-facebook" v-if="loading">
     <div></div>
     <div></div>
     <div></div>
+  </div> -->
+  <div class="spinner-container" v-if="loading">
+    <div class="spinner"></div>
   </div>
 </template>
 <script>
@@ -16,7 +19,7 @@ export default {
 };
 </script>
 <style>
-.lds-facebook {
+/* .lds-facebook {
   position: absolute;
   top: 45%;
   left: 45%;
@@ -51,6 +54,31 @@ export default {
   100% {
     top: 19px;
     height: 50px;
+  }
+} */
+
+.spinner-container {
+  position: absolute;
+  top: 35%;
+  left: 45%;
+}
+
+.spinner {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  border: 5px solid var(--white-color);
+  border-bottom: 5px solid var(--grey-color);
+  animation: spin 1s linear infinite;
+  position: relative;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
   }
 }
 </style>

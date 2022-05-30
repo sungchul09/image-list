@@ -71,9 +71,9 @@ a {
 }
 
 span {
-  color: #0064e6;
-  background-color: white;
-  border: 1px solid #0064e6;
+  color: var(--blue-color);
+  background-color: var(--white-color);
+  border: 1px solid var(--blue-color);
   width: 70px;
   height: 70px;
   line-height: 70px;
@@ -86,9 +86,9 @@ span {
 
 span:hover {
   cursor: pointer;
-  border: 1px solid #0064e6;
-  background-color: #0064e6;
-  color: white;
+  border: 1px solid var(--blue-color);
+  background-color: var(--blue-color);
+  color: var(--white-color);
   transition: 150ms ease-in-out;
 }
 
