@@ -2,6 +2,7 @@ import Vue from 'vue';
 import VueRouter from 'vue-router';
 // import ImageList from '@/views/ImageList';
 import ImageInfo from '@/views/ImageInfo';
+import { store } from '@/store/index';
 
 Vue.use(VueRouter);
 
@@ -35,4 +36,21 @@ export const router = new VueRouter({
       component: ImageInfo,
     },
   ],
+});
+
+router.beforeEach((to, from, next) => {
+  store.commit('startSpinner');
+  setTimeout(() => {
+    console.log(to);
+    next();
+  }, 1000);
+});
+
+router.afterEach((to, from) => {
+  store.commit('endSpinner');
+  if (to.name === 'imageInfo') {
+    store.commit('backBtn');
+  } else if (to.name === 'imageList') {
+    store.commit('pageBtn');
+  }
 });

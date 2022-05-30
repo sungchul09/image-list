@@ -51,13 +51,8 @@ export default {
     const page = this.$route.params.page;
     const limit = this.$route.params.limit;
     window.scrollTo(0, 0);
-    this.$store.state.spinnerStatus = true;
-    this.$store.state.btnStatus = true;
     this.limit = this.$route.params.limit;
     this.$store.dispatch('FETCH_IMAGELIST', { page, limit });
-  },
-  mounted() {
-    this.$store.state.spinnerStatus = false;
   },
   data() {
     return {

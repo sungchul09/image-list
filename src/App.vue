@@ -2,22 +2,22 @@
   <div id="app">
     <header-menu></header-menu>
     <router-view></router-view>
-    <sticky-button :active="this.$store.state.btnStatus"></sticky-button>
-    <loading-spinner :loading="this.$store.state.spinnerStatus"></loading-spinner>
+    <fix-button :pageBtn="$store.state.pageBtn"></fix-button>
+    <spinner :loading="$store.state.loadingStatus"> </spinner>
     <footer-component></footer-component>
   </div>
 </template>
 
 <script>
 import HeaderMenu from '@/components/common/headerMenu';
-import LoadingSpinner from './components/LoadingSpinner';
-import StickyButton from './components/StickyButton';
+import Spinner from '@/components/Spinner';
+import FixButton from '@/components/FixButton';
 import FooterComponent from '@/components/common/Footer';
 export default {
   components: {
     HeaderMenu,
-    LoadingSpinner,
-    StickyButton,
+    Spinner,
+    FixButton,
     FooterComponent,
   },
 };

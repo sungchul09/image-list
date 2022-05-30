@@ -38,12 +38,7 @@ export default {
   },
   created() {
     window.scrollTo(0, 0);
-    this.$store.state.spinnerStatus = true;
-    this.$store.state.btnStatus = false;
     this.$store.dispatch('FETCH_IMAGEINFO', this.$route.params.id);
-  },
-  mounted() {
-    this.$store.state.spinnerStatus = false;
   },
 };
 </script>

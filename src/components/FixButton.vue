@@ -1,11 +1,13 @@
 <template>
   <div class="btn">
-    <div class="scroll" v-if="active">
-      <span @click="scrollUp">☝️</span>
-    </div>
-    <div class="paging" v-if="active">
-      <span @click="changePage(-1)">prev</span>
-      <span @click="changePage(1)">next</span>
+    <div v-if="pageBtn">
+      <div class="scroll">
+        <span @click="scrollUp">☝️</span>
+      </div>
+      <div class="paging">
+        <span @click="prevBtn">prev</span>
+        <span @click="nextBtn">next</span>
+      </div>
     </div>
     <div class="paging" v-else>
       <router-link to="/">BACK</router-link>
@@ -16,7 +18,7 @@
 <script>
 export default {
   props: {
-    active: {
+    pageBtn: {
       type: Boolean,
       required: true,
     },
@@ -25,16 +27,20 @@ export default {
     scrollUp() {
       window.scrollTo({ top: 0, behavior: 'smooth' });
     },
-    changePage(value) {
-      let page = this.$route.params.page;
-      let limit = this.$route.params.limit;
-      if (page <= 1 && value === -1) {
+    prevBtn() {
+      if (this.$route.params.page <= 1) {
         alert('첫 페이지입니다.');
         return;
       }
-      page = Number.parseInt(page) + value;
-      this.$route.params.page = page;
-      this.$router.push(`/imageList/${page}/${limit}`);
+      this.$route.params.page--;
+      this.movePage();
+    },
+    nextBtn() {
+      this.$route.params.page++;
+      this.movePage();
+    },
+    movePage() {
+      this.$router.push(`/imageList/${this.$route.params.page}/${this.$route.params.limit}`);
       this.$router.go();
     },
   },

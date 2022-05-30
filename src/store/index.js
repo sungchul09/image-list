@@ -8,8 +8,8 @@ export const store = new Vuex.Store({
   state: {
     imageList: [],
     imageInfo: {},
-    spinnerStatus: '',
-    btnStatus: '',
+    loadingStatus: false,
+    pageBtn: true,
   },
   getters: {
     getImageList(state) {
@@ -25,6 +25,18 @@ export const store = new Vuex.Store({
     },
     SET_IMAGEINFO: function (state, data) {
       state.imageInfo = data;
+    },
+    startSpinner(state) {
+      state.loadingStatus = true;
+    },
+    endSpinner(state) {
+      state.loadingStatus = false;
+    },
+    pageBtn(state) {
+      state.pageBtn = true;
+    },
+    backBtn(state) {
+      state.pageBtn = false;
     },
   },
   actions: {

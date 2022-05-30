@@ -5,7 +5,6 @@
     <div></div>
   </div>
 </template>
-
 <script>
 export default {
   props: {
@@ -16,11 +15,10 @@ export default {
   },
 };
 </script>
-
 <style>
 .lds-facebook {
   display: inline-block;
-  position: fixed;
+  position: relative;
   width: 64px;
   height: 64px;
   top: 47%;
@@ -28,10 +26,10 @@ export default {
 }
 .lds-facebook div {
   display: inline-block;
-  position: absolute;
+  position: relative;
   left: 6px;
   width: 13px;
-  background: #0064e6;
+  background: #bde4ff;
   animation: lds-facebook 1.2s cubic-bezier(0, 0.5, 0.5, 1) infinite;
 }
 .lds-facebook div:nth-child(1) {
@@ -54,7 +52,7 @@ export default {
   50%,
   100% {
     top: 19px;
-    height: 26px;
+    height: 25px;
   }
 }
 </style>
