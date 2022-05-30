@@ -47,7 +47,7 @@ router.beforeEach((to, from, next) => {
 router.afterEach((to, from) => {
   setTimeout(() => {
     store.commit('endSpinner');
-  }, 1000);
+  }, 200);
   if (to.name === 'imageInfo') {
     store.commit('backBtn');
   } else if (to.name === 'imageList') {

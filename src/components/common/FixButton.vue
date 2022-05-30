@@ -25,18 +25,22 @@ export default {
   },
   methods: {
     scrollUp() {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+      window.scrollTo({ top: 0, behavior: "smooth" });
     },
     prevBtn() {
       if (this.$route.params.page <= 1) {
-        alert('첫 페이지입니다.');
+        alert("첫 페이지입니다.");
         return;
       }
-      this.$router.push(`/imageList/${--this.$route.params.page}/${this.$route.params.limit}`);
+      this.$router.push(
+        `/imageList/${--this.$route.params.page}/${this.$route.params.limit}`
+      );
       this.$router.go();
     },
     nextBtn() {
-      this.$router.push(`/imageList/${++this.$route.params.page}/${this.$route.params.limit}`);
+      this.$router.push(
+        `/imageList/${++this.$route.params.page}/${this.$route.params.limit}`
+      );
       this.$router.go();
     },
     backBtn() {
@@ -70,9 +74,9 @@ span {
   color: #0064e6;
   background-color: white;
   border: 1px solid #0064e6;
-  width: 80px;
-  height: 80px;
-  line-height: 80px;
+  width: 70px;
+  height: 70px;
+  line-height: 70px;
   font-size: 20px;
   text-align: center;
   border-radius: 50%;
@@ -82,9 +86,9 @@ span {
 
 span:hover {
   cursor: pointer;
-  border: 1px solid #bde4ff;
-  background-color: #bde4ff;
-  color: #213039;
+  border: 1px solid #0064e6;
+  background-color: #0064e6;
+  color: white;
   transition: 150ms ease-in-out;
 }
 

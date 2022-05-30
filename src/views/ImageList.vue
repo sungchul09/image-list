@@ -9,7 +9,10 @@
               :href="`https://picsum.photos/id/${data.id}/${data.width}/${data.height}`"
               target="_blank"
             >
-              <img :src="data.download_url" :alt="data.url" />
+              <img
+                :src="data.download_url"
+                onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1594322436404-5a0526db4d13?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=250&q=250';"
+              />
             </a>
           </li>
           <li class="data__text">
@@ -17,7 +20,8 @@
               <a :href="data.url" target="_blank">{{ data.author }}</a>
             </span>
             <span class="data__text__id">
-              <a :href="`https://picsum.photos/id/${data.id}/${data.width}/${data.height}`"
+              <a
+                :href="`https://picsum.photos/id/${data.id}/${data.width}/${data.height}`"
                 >#{{ data.id }}</a
               >
             </span>
@@ -32,20 +36,29 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex';
-import LimitList from '@/components/LimitList.vue';
+import { mapGetters } from "vuex";
+import LimitList from "@/components/LimitList.vue";
+
 export default {
   components: {
     LimitList,
   },
   computed: {
-    ...mapGetters({ imageList: 'getImageList' }),
+    ...mapGetters({ imageList: "getImageList" }),
   },
   created() {
     window.scrollTo(0, 0);
     const page = this.$route.params.page;
     const limit = this.$route.params.limit;
-    this.$store.dispatch('FETCH_IMAGELIST', { page, limit });
+    this.$store.dispatch("FETCH_IMAGELIST", { page, limit });
+  },
+  methods: {
+    imgError(e) {
+      // e.onerror = "";
+      e.src = "../assets/images/error.png";
+      console.log(e);
+      return true;
+    },
   },
 };
 </script>
