@@ -24,12 +24,6 @@ export default {
         "https://images.unsplash.com/photo-1594322436404-5a0526db4d13?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=250&q=250",
     };
   },
-  methods: {
-    imageError(e) {
-      e.target.onerror = null;
-      e.target.src = this.errorSrc;
-    },
-  },
 };
 </script>
 

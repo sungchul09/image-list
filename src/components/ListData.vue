@@ -29,7 +29,7 @@
 
 <script>
 export default {
-  props: ["propsdata", "propserror"],
+  props: { propsdata: Array, propserror: String },
   methods: {
     imageError(e) {
       e.target.onerror = null;
