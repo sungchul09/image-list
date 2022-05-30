@@ -2,8 +2,8 @@
   <div id="app">
     <nav-bar></nav-bar>
     <router-view></router-view>
-    <fix-button :pageBtn="$store.state.pageBtn"></fix-button>
     <spinner :loading="$store.state.loadingStatus"></spinner>
+    <fix-button :pageBtn="$store.state.pageBtn"></fix-button>
     <footer-component></footer-component>
   </div>
 </template>

@@ -40,16 +40,16 @@ export const router = new VueRouter({
 
 router.beforeEach((to, from, next) => {
   store.commit('startSpinner');
-  // setTimeout(() => {
   next();
-  // }, 500);
 });
 
 router.afterEach((to, from) => {
+  setTimeout(() => {
+    store.commit('endSpinner');
+  }, 500);
   if (to.name === 'imageInfo') {
     store.commit('backBtn');
   } else if (to.name === 'imageList') {
     store.commit('pageBtn');
   }
-  store.commit('endSpinner');
 });

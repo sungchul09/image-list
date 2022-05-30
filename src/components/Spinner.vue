@@ -19,11 +19,10 @@ export default {
 .lds-facebook {
   display: inline-block;
   position: relative;
-  width: 64px;
   height: 64px;
   top: 47%;
   left: 47%;
-  margin-bottom: 50%;
+  margin: 15% 0;
 }
 .lds-facebook div {
   display: inline-block;
