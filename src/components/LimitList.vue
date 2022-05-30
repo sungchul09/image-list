@@ -1,6 +1,6 @@
 <template>
   <div class="limit">
-    <p>📕 페이지당 항목 수 :</p>
+    <p>📕 페이지 항목 :</p>
     <select v-model="limit" @change="changeUrl">
       <option selected>10</option>
       <option>20</option>
@@ -41,12 +41,14 @@ export default {
 
 .limit p {
   margin-right: 10px;
+  font-size: 20px;
 }
 
 .limit select {
   font-size: 15px;
   font-weight: bold;
   text-align: center;
-  width: 150px;
+  width: 90px;
+  font-size: 20px;
 }
 </style>

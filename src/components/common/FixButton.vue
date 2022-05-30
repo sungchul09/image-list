@@ -32,19 +32,15 @@ export default {
         alert('첫 페이지입니다.');
         return;
       }
-      this.$route.params.page--;
-      this.movePage();
+      this.$router.push(`/imageList/${--this.$route.params.page}/${this.$route.params.limit}`);
+      this.$router.go();
     },
     nextBtn() {
-      this.$route.params.page++;
-      this.movePage();
+      this.$router.push(`/imageList/${++this.$route.params.page}/${this.$route.params.limit}`);
+      this.$router.go();
     },
     backBtn() {
       this.$router.go(-1);
-    },
-    movePage() {
-      this.$router.push(`/imageList/${this.$route.params.page}/${this.$route.params.limit}`);
-      this.$router.go();
     },
   },
 };
@@ -74,13 +70,14 @@ span {
   color: #0064e6;
   background-color: white;
   border: 1px solid #0064e6;
-  width: 50px;
-  height: 50px;
-  line-height: 50px;
+  width: 80px;
+  height: 80px;
+  line-height: 80px;
+  font-size: 20px;
   text-align: center;
   border-radius: 50%;
   margin: 20px 50px 0 0;
-  font-size: 15px;
+  transition: 300ms ease-in-out;
 }
 
 span:hover {
@@ -94,5 +91,24 @@ span:hover {
 span a {
   width: 50px;
   height: 50px;
+}
+@media screen and (max-width: 1024px) {
+  span {
+    width: 60px;
+    height: 60px;
+    line-height: 60px;
+    font-size: 17px;
+    transition: 300ms ease-in-out;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  span {
+    width: 50px;
+    height: 50px;
+    line-height: 50px;
+    font-size: 15px;
+    transition: 300ms ease-in-out;
+  }
 }
 </style>

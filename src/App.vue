@@ -1,21 +1,21 @@
 <template>
   <div id="app">
-    <header-menu></header-menu>
+    <nav-bar></nav-bar>
     <router-view></router-view>
     <fix-button :pageBtn="$store.state.pageBtn"></fix-button>
-    <spinner :loading="$store.state.loadingStatus"> </spinner>
+    <spinner :loading="$store.state.loadingStatus"></spinner>
     <footer-component></footer-component>
   </div>
 </template>
 
 <script>
-import HeaderMenu from '@/components/common/headerMenu';
+import NavBar from '@/components/common/NavBar';
 import Spinner from '@/components/Spinner';
-import FixButton from '@/components/FixButton';
+import FixButton from '@/components/common/FixButton';
 import FooterComponent from '@/components/common/Footer';
 export default {
   components: {
-    HeaderMenu,
+    NavBar,
     Spinner,
     FixButton,
     FooterComponent,

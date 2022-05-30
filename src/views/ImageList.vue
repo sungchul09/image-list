@@ -42,9 +42,9 @@ export default {
     ...mapGetters({ imageList: 'getImageList' }),
   },
   created() {
+    window.scrollTo(0, 0);
     const page = this.$route.params.page;
     const limit = this.$route.params.limit;
-    window.scrollTo(0, 0);
     this.$store.dispatch('FETCH_IMAGELIST', { page, limit });
   },
 };

@@ -38,12 +38,12 @@ export const router = new VueRouter({
   ],
 });
 
-// router.beforeEach((to, from, next) => {
-//   store.commit('startSpinner');
-//   setTimeout(() => {
-//     next();
-//   }, 500);
-// });
+router.beforeEach((to, from, next) => {
+  store.commit('startSpinner');
+  // setTimeout(() => {
+  next();
+  // }, 500);
+});
 
 router.afterEach((to, from) => {
   if (to.name === 'imageInfo') {
