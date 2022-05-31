@@ -1,6 +1,6 @@
 <template>
   <div class="btn">
-    <div class="toggleOnBtn" v-if="pageBtn">
+    <div class="toggleOnBtn" v-if="toggleBtn">
       <div class="scrollBtn">
         <span @click="scrollUp">☝️</span>
       </div>
@@ -18,7 +18,7 @@
 <script>
 export default {
   props: {
-    pageBtn: {
+    toggleBtn: {
       type: Boolean,
       required: true,
     },

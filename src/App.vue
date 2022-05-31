@@ -3,16 +3,16 @@
     <the-navbar></the-navbar>
     <router-view></router-view>
     <spinner :loading="$store.state.loadingStatus"></spinner>
-    <fix-button :pageBtn="$store.state.pageBtn"></fix-button>
+    <fix-button :toggleBtn="$store.state.toggleBtn"></fix-button>
     <the-footer></the-footer>
   </div>
 </template>
 
 <script>
-import TheNavbar from "@/components/common/TheNavbar";
-import Spinner from "@/components/Spinner";
-import FixButton from "@/components/common/FixButton";
-import TheFooter from "@/components/common/TheFooter";
+import TheNavbar from '@/components/common/TheNavbar';
+import Spinner from '@/components/Spinner';
+import FixButton from '@/components/common/FixButton';
+import TheFooter from '@/components/common/TheFooter';
 export default {
   components: {
     TheNavbar,

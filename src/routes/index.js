@@ -18,7 +18,7 @@ export const router = new VueRouter({
         to.params.page = defaultValue.page;
         to.params.limit = defaultValue.limit;
         return {
-          name: 'imageList'
+          name: 'imageList',
         };
       },
     },
@@ -35,7 +35,7 @@ export const router = new VueRouter({
     {
       path: '*',
       component: () => import('@/views/NotFountPage.vue'),
-    }
+    },
   ],
 });
 
@@ -48,9 +48,9 @@ router.afterEach((to, from) => {
   setTimeout(() => {
     store.commit('endSpinner');
   }, 200);
-  if (to.name === 'imageInfo') {
-    store.commit('backBtn');
-  } else if (to.name === 'imageList') {
-    store.commit('pageBtn');
+  if (to.name === 'imageList') {
+    store.commit('toggleBtnOn');
+  } else if (to.name === 'imageInfo') {
+    store.commit('toggleBtnOff');
   }
 });

@@ -9,7 +9,7 @@ export const store = new Vuex.Store({
     imageList: [],
     imageInfo: {},
     loadingStatus: false,
-    pageBtn: true,
+    toggleBtn: true,
   },
   getters: {
     getImageList(state) {
@@ -24,7 +24,7 @@ export const store = new Vuex.Store({
     SET_IMAGELIST: function (state, data) {
       data.map((v) => {
         v.download_url = `${process.env.VUE_APP_API_URL}id/${v.id}/250`;
-        v.link = `${process.env.VUE_APP_API_URL}id/${v.id}/${v.width}/${v.height}`
+        v.link = `${process.env.VUE_APP_API_URL}id/${v.id}/${v.width}/${v.height}`;
       });
       state.imageList = data;
     },
@@ -40,11 +40,11 @@ export const store = new Vuex.Store({
       state.loadingStatus = false;
     },
     // 고정버튼
-    pageBtn(state) {
-      state.pageBtn = true;
+    toggleBtnOn(state) {
+      state.toggleBtn = true;
     },
-    backBtn(state) {
-      state.pageBtn = false;
+    toggleBtnOff(state) {
+      state.toggleBtn = false;
     },
   },
   actions: {
