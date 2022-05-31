@@ -1,15 +1,15 @@
 <template>
   <div class="btn">
-    <div class="pageBtn" v-if="pageBtn">
-      <div class="scroll">
+    <div class="toggleOnBtn" v-if="pageBtn">
+      <div class="scrollBtn">
         <span @click="scrollUp">☝️</span>
       </div>
-      <div class="paging">
+      <div class="pageBtn">
         <span @click="prevBtn">prev</span>
         <span @click="nextBtn">next</span>
       </div>
     </div>
-    <div class="paging" v-else>
+    <div class="backBtn" v-else>
       <span @click="backBtn">BACK</span>
     </div>
   </div>
@@ -25,22 +25,18 @@ export default {
   },
   methods: {
     scrollUp() {
-      window.scrollTo({ top: 0, behavior: "smooth" });
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     },
     prevBtn() {
       if (this.$route.params.page <= 1) {
-        alert("첫 페이지입니다.");
+        alert('첫 페이지입니다.');
         return;
       }
-      this.$router.push(
-        `/imageList/${--this.$route.params.page}/${this.$route.params.limit}`
-      );
+      this.$router.push(`/imageList/${--this.$route.params.page}/${this.$route.params.limit}`);
       this.$router.go();
     },
     nextBtn() {
-      this.$router.push(
-        `/imageList/${++this.$route.params.page}/${this.$route.params.limit}`
-      );
+      this.$router.push(`/imageList/${++this.$route.params.page}/${this.$route.params.limit}`);
       this.$router.go();
     },
     backBtn() {
@@ -56,10 +52,9 @@ a {
 }
 
 .btn,
+.scrollBtn,
 .pageBtn,
-.scroll,
-.paging,
-.back {
+.backBtn {
   position: sticky;
   bottom: 5%;
   left: 95%;
